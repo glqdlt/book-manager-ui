@@ -13,6 +13,8 @@ import {BookListViewComponent} from './book-list-view/book-list-view.component';
 import { WriteBookComponent } from './write-book/write-book.component';
 import {HttpServiceService} from "./http-service.service";
 import { BookListView2Component } from './book-list-view2/book-list-view2.component';
+import { BookListView3Component } from './book-list-view3/book-list-view3.component';
+import {FormsModule} from "@angular/forms";
 
 const routes: Routes = [
   {path: '', redirectTo: 'multi', pathMatch: 'full'},
@@ -20,6 +22,7 @@ const routes: Routes = [
   {path: 'write', component: WriteBookComponent},
   {path: 'list', component: BookListViewComponent},
   {path: 'list2', component: BookListView2Component},
+  {path: 'list3', component: BookListView3Component},
   {path: 'lock', component: SubPageCompComponent, canActivate: [AuthGuardService]},
   {path: "login", component: LoginComponent}];
 
@@ -38,10 +41,12 @@ const routes: Routes = [
     LoginComponent,
     BookListViewComponent,
     WriteBookComponent,
-    BookListView2Component
+    BookListView2Component,
+    BookListView3Component
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],

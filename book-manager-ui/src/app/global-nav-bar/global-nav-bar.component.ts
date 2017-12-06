@@ -13,7 +13,8 @@ export class GlobalNavBarComponent implements OnInit {
       {keyword: 'Lock', url: 'lock'},
       {keyword: 'Write', url: 'write'},
       {keyword: 'List', url: 'list'},
-      {keyword: 'List2', url: 'list2'}
+      {keyword: 'List2', url: 'list2'},
+      {keyword: 'List3', url: 'list3'}
     ];
 
 

@@ -6,6 +6,8 @@ import {Observable} from "rxjs/Observable";
 @Injectable()
 export class HttpServiceService {
 
+  private URL: string = 'http://127.0.0.1:38080/book/search';
+
   dummyData: object[] = [{
     "no": 1,
     "subject": "subject0",
@@ -38,20 +40,27 @@ export class HttpServiceService {
     "review_url": "review"
   }];
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient: HttpClient) {
 
-  getDummyDatas(){
+
+  }
+
+  getDummyDatas() {
     return this.dummyData;
   }
 
-  getRealDatas() : any{
+  getRealDatas(): any {
 
-    return this.httpClient.get('http://127.0.0.1:38080/book/search/all');
+    return this.httpClient.get(this.URL + '/all');
     // 이렇게하면 async로 되어서 빈 data를 일단 던지고 봐서 문제가 된다.
     // this.httpClient.get('http://127.0.0.1:38080/book/search/all').subscribe(data =>{
     // console.log(data); // 여기에는 데이터가 출력되지만 Component 에는 이게 찍히기전에 return data; 해버림
     //   return data;
     // });
+  }
+
+  gerRealDatasPaging(page:number): any {
+    return this.httpClient.get(this.URL+'/'+page);
   }
 
 }
