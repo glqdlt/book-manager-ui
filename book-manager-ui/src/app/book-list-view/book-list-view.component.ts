@@ -12,7 +12,7 @@ export class BookListViewComponent implements OnInit {
   title;
 
   dummyData: object[];
-  dateFormat = 'yyyy.MM.dd HH:mm:ss';
+  DATE_FORMAT = 'yyyy.MM.dd HH:mm:ss';
 
   bookModel: Book;
 

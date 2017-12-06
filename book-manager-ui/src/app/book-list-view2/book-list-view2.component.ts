@@ -10,14 +10,12 @@ import {HttpServiceService} from "../http-service.service";
 export class BookListView2Component implements OnInit {
   title : string;
   private bookModel: Book[];
-  dateFormat = 'yyyy.MM.dd HH:mm:ss';
+  DATE_FORMAT = 'yyyy.MM.dd HH:mm:ss';
 
   constructor(private httpClientService: HttpServiceService) {
     this.title = 'Book list!2';
     this.onLoad();
   }
-
-
 
   ngOnInit() {
     // this.onLoad();
