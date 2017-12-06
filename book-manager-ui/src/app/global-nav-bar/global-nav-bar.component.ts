@@ -17,7 +17,6 @@ export class GlobalNavBarComponent implements OnInit {
       {keyword: 'List3', url: 'list3'}
     ];
 
-
   constructor() {
   }
 

@@ -2,13 +2,12 @@
   Form Writer!
 </h2>
 
-<form>
+<form #f="ngForm" (ngSubmit)="clickSubmit(f)" novalidate>
   <ng-container *ngFor="let form of FORM_DATA; let i = index">
-    <label>{{form.label}} :</label>
-    <input [type]="form.type"/>
-      <br/>
+    <label>{{i}}. {{form.label}} :</label>
+    <input [name]="form.label" [type]="form.type" ngModel/>
+    <br/>
   </ng-container>
+  <button type="submit">Sender</button>
+  <button type="reset">Reset</button>
 </form>
-
-<button type="submit">Sender</button>
-<button type="resest">Reset</button>
