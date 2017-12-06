@@ -1,3 +1,14 @@
 <h2>
   Form Writer!
 </h2>
+
+<form>
+  <ng-container *ngFor="let form of FORM_DATA; let i = index">
+    <label>{{form.label}} :</label>
+    <input [type]="form.type"/>
+      <br/>
+  </ng-container>
+</form>
+
+<button type="submit">Sender</button>
+<button type="resest">Reset</button>

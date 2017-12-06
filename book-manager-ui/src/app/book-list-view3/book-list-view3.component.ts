@@ -1,5 +1,5 @@
 import {Component, OnInit, Output} from '@angular/core';
-import {Book} from "../book-list-view/BookModel";
+import {Book} from "../Model/BookModel";
 import {HttpServiceService} from "../http-service.service";
 
 @Component({
@@ -8,15 +8,15 @@ import {HttpServiceService} from "../http-service.service";
   styleUrls: ['./book-list-view3.component.css']
 })
 export class BookListView3Component implements OnInit {
+  DATE_FORMAT = 'yyyy.MM.dd HH:mm:ss';
 
   title: string;
   private bookModel: Book[];
    page: number;
   private count: number;
-  dateFormat = 'yyyy.MM.dd HH:mm:ss';
 
   constructor(private httpClientService: HttpServiceService) {
-    this.title = 'Book list!2';
+    this.title = 'Book list! 3';
     this.page = 1;
     this.onLoad(this.page);
   }
