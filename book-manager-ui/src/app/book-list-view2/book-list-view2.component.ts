@@ -13,7 +13,7 @@ export class BookListView2Component implements OnInit {
   DATE_FORMAT = 'yyyy.MM.dd HH:mm:ss';
 
   constructor(private httpClientService: HttpServiceService) {
-    this.title = 'Book list!2';
+    this.title = '도서 리스트 All';
     this.onLoad();
   }
 
@@ -33,10 +33,11 @@ export class BookListView2Component implements OnInit {
 
   onLoad(){
     this.httpClientService.getRealDatas().subscribe(
-      result => this.bookModel = result,
+      result => this.bookModel = result.reverse(),
       error => alert('음 서버 상태가 메롱하네요.. 다시 시도해보세요')
     );
   }
+
 
   clearAll() {
     this.bookModel = null;

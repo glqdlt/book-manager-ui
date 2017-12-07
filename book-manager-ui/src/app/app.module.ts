@@ -15,6 +15,8 @@ import {HttpServiceService} from "./http-service.service";
 import { BookListView2Component } from './book-list-view2/book-list-view2.component';
 import { BookListView3Component } from './book-list-view3/book-list-view3.component';
 import {FormsModule} from "@angular/forms";
+import { ModalLayerComponent } from './modal-layer/modal-layer.component';
+import { BookTypePipe } from './book-type.pipe';
 
 const routes: Routes = [
   {path: '', redirectTo: 'multi', pathMatch: 'full'},
@@ -42,7 +44,9 @@ const routes: Routes = [
     BookListViewComponent,
     WriteBookComponent,
     BookListView2Component,
-    BookListView3Component
+    BookListView3Component,
+    ModalLayerComponent,
+    BookTypePipe
   ],
   imports: [
     BrowserModule,

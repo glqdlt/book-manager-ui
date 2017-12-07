@@ -1,4 +1,4 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Book} from "../Model/BookModel";
 import {HttpServiceService} from "../http-service.service";
 
@@ -9,16 +9,20 @@ import {HttpServiceService} from "../http-service.service";
 })
 export class BookListView3Component implements OnInit {
   DATE_FORMAT = 'yyyy.MM.dd HH:mm:ss';
-
   title: string;
   private bookModel: Book[];
-   page: number;
+  nowPage: number;
   private count: number;
+  private pagingRange;
 
   constructor(private httpClientService: HttpServiceService) {
-    this.title = 'Book list! 3';
-    this.page = 1;
-    this.onLoad(this.page);
+    this.title = '도서 리스트 Paging';
+    this.setFirstPageNumb();
+    this.onLoad(this.nowPage);
+  }
+
+  setFirstPageNumb(numb: number = 0) {
+    this.nowPage = numb;
   }
 
 
@@ -31,17 +35,19 @@ export class BookListView3Component implements OnInit {
       alert('이미 데이터가 있는데요');
       return;
     }
-    this.onLoad(this.page);
+    this.onLoad(this.nowPage);
   };
 
-
-
-  onLoad(page: number) {
-    this.httpClientService.gerRealDatasPaging(page).subscribe(
+  onLoad(nowPage: number) {
+    this.httpClientService.gerRealDatasPaging(nowPage).subscribe(
       result => (
-        this.bookModel = result['data'], this.count = result['count']),
+        this.bookModel = result['data'],
+          this.count = result['count'],
+          this.pagingMaker(this.count)
+      ),
       error => alert('음 서버 상태가 메롱하네요.. 다시 시도해보세요')
-    );
+    )
+    ;
   };
 
   clearAll() {
@@ -50,13 +56,31 @@ export class BookListView3Component implements OnInit {
 
 
   pageUp() {
-    this.page++;
-    this.onLoad(this.page);
+    this.nowPage++;
+    this.onLoad(this.nowPage);
   }
 
   pageDown() {
-    this.page--;
-    this.onLoad(this.page);
+    this.nowPage--;
+    this.onLoad(this.nowPage);
+  }
+
+  pagePush(numb: number) {
+    this.nowPage = numb;
+    this.onLoad(this.nowPage);
+  }
+
+  private pagingMaker(count: number) {
+
+    const range = Array();
+    for (let i = 0; i < count; i++) {
+      range.push(i);
+    }
+
+    this.pagingRange = range;
   }
 
 }
+
+
+

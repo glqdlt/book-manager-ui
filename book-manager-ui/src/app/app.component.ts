@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  welcome: string = 'Site Header';
+  header: string = '도서 관리 시스템';
 }
