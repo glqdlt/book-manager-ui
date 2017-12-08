@@ -17,6 +17,8 @@ import { BookListView3Component } from './book-list-view3/book-list-view3.compon
 import {FormsModule} from "@angular/forms";
 import { ModalLayerComponent } from './modal-layer/modal-layer.component';
 import { BookTypePipe } from './book-type.pipe';
+import {UrlListService} from "./url-list.service";
+import { ChartViewComponent } from './chart-view/chart-view.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'multi', pathMatch: 'full'},
@@ -25,6 +27,7 @@ const routes: Routes = [
   {path: 'list', component: BookListViewComponent},
   {path: 'list2', component: BookListView2Component},
   {path: 'list3', component: BookListView3Component},
+  {path: 'charts', component: ChartViewComponent},
   {path: 'lock', component: SubPageCompComponent, canActivate: [AuthGuardService]},
   {path: "login", component: LoginComponent}];
 
@@ -46,7 +49,8 @@ const routes: Routes = [
     BookListView2Component,
     BookListView3Component,
     ModalLayerComponent,
-    BookTypePipe
+    BookTypePipe,
+    ChartViewComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthGuardService, HttpServiceService],
+  providers: [AuthGuardService, HttpServiceService, UrlListService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

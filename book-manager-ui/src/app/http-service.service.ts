@@ -1,10 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {UrlListService} from "./url-list.service";
+import {NgForm} from "@angular/forms";
+import {Book} from "./Model/BookModel";
 
 @Injectable()
 export class HttpServiceService {
 
-  private URL: string = 'http://127.0.0.1:38080/book/search';
+  private URL: string;
 
   dummyData: object[] = [{
     "no": 1,
@@ -38,9 +41,8 @@ export class HttpServiceService {
     "review_url": "review"
   }];
 
-  constructor(private httpClient: HttpClient) {
-
-
+  constructor(private httpClient: HttpClient, urlList : UrlListService) {
+    this.URL = urlList.BOOK_SERVER_URL;
   }
 
   getDummyDatas() {
@@ -48,11 +50,15 @@ export class HttpServiceService {
   }
 
   getRealDatas(): any {
-    return this.httpClient.get(this.URL + '/all');
+    return this.httpClient.get(this.URL + '/book/search/all');
   }
 
   gerRealDatasPaging(page:number): any {
-    return this.httpClient.get(this.URL+'/'+page);
+    return this.httpClient.get(this.URL+'/book/search/'+page);
+  }
+
+  bookWrtie(book : Book) {
+    return this.httpClient.put(this.URL+'/book/write',book);
   }
 
 }

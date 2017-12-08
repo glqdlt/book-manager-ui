@@ -10,12 +10,12 @@ import {HttpServiceService} from "../http-service.service";
 export class BookListView3Component implements OnInit {
   DATE_FORMAT = 'yyyy.MM.dd HH:mm:ss';
   title: string;
-  private bookModel: Book[];
+  bookModel: Book[];
   nowPage: number;
-  private count: number;
-  private pagingRange;
+  count: number;
+  pagingRange;
 
-  constructor(private httpClientService: HttpServiceService) {
+  constructor(private httpServiceService: HttpServiceService) {
     this.title = '도서 리스트 Paging';
     this.setFirstPageNumb();
     this.onLoad(this.nowPage);
@@ -39,7 +39,7 @@ export class BookListView3Component implements OnInit {
   };
 
   onLoad(nowPage: number) {
-    this.httpClientService.gerRealDatasPaging(nowPage).subscribe(
+    this.httpServiceService.gerRealDatasPaging(nowPage).subscribe(
       result => (
         this.bookModel = result['data'],
           this.count = result['count'],

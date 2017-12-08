@@ -3,6 +3,8 @@ import {NgForm} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Book} from "../Model/BookModel";
 import {Router} from "@angular/router";
+import {UrlListService} from "../url-list.service";
+import {HttpServiceService} from "../http-service.service";
 
 @Component({
   selector: 'app-write-book',
@@ -11,7 +13,7 @@ import {Router} from "@angular/router";
 })
 export class WriteBookComponent implements OnInit {
 
-  bookModel : Book;
+  bookModel: Book;
   FORM_DATA: object[] = [
     {type: 'text', label: 'subject'},
     {type: 'text', label: 'author'},
@@ -28,33 +30,35 @@ export class WriteBookComponent implements OnInit {
   ];
 
   private route: Router;
+  private url: string;
+  private httpService: HttpServiceService;
 
-  constructor(private httpClient : HttpClient, route : Router) {
+  constructor(httpService: HttpServiceService, route: Router, urlList: UrlListService) {
 
     this.route = route;
+    this.url = urlList.BOOK_SERVER_URL + '/book/wirte';
+    this.httpService = httpService;
+
   }
 
   ngOnInit() {
   }
 
 
-
-  clickSubmit(f : NgForm) {
+  clickSubmit(f: NgForm) {
     this.bookModel = this.valueMaker(f);
-    this.httpClient.put('http://127.0.0.1:38080/book/write',this.bookModel).subscribe();
+    this.httpService.bookWrtie(this.bookModel).subscribe();
     alert('전송 되었습니다');
     this.route.navigate(['/list3']);
   }
 
 
-
-  valueMaker(f:NgForm) : Book{
+  valueMaker(f: NgForm): Book {
     f.value.update_date = new Date();
     f.value.reg_date = new Date();
     f.value.reg_id = 'Admin';
     return f.value;
   }
-
 
 
 }

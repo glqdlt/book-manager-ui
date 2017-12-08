@@ -24,7 +24,8 @@ export class GlobalNavBarComponent implements OnInit {
     [
       {keyword: '테스트용', url: 'multi'},
       {keyword: '로그인테스트', url: 'lock'},
-      {keyword: '신규 도서', url: 'write'}
+      {keyword: '신규 도서', url: 'write'},
+      {keyword: '차트 테스트', url: 'charts'}
     ];
   dropDown: boolean;
   dropDownChild: object[] = [
