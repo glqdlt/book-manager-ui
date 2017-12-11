@@ -3,8 +3,8 @@ import {NgForm} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Book} from "../Model/BookModel";
 import {Router} from "@angular/router";
-import {UrlListService} from "../UrlListService";
-import {HttpService} from "../HttpService";
+import {UrlListService} from "../Services/UrlListService";
+import {HttpService} from "../Services/HttpService";
 
 @Component({
   selector: 'app-write-book',

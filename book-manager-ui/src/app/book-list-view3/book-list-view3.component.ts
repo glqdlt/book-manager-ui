@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Book} from "../Model/BookModel";
-import {HttpService} from "../HttpService";
+import {HttpService} from "../Services/HttpService";
 import {Observable} from "rxjs/rx";
 import {Subscription} from "rxjs/Subscription";
 
@@ -15,33 +15,32 @@ export class BookListView3Component implements OnInit, OnDestroy {
 
   title: string;
   bookModel: Book[];
+
   nowPage: number;
-  count: number;
+
+  totalPage: number;
+  maxPage: number;
+
   pagingRange;
   private subscribe: Subscription;
 
 
   constructor(private httpServiceService: HttpService) {
     this.title = 'Book List Page';
-    this.setFirstPageNumb();
+    // this.setFirstPageNumb();
+    this.nowPage = 0;
+    this.maxPage = 9;
     // this.onLoad(this.nowPage);
   }
 
-  setFirstPageNumb(numb: number = 0) {
-    this.nowPage = numb;
-  }
-
-
   ngOnInit() {
     // Observable.timer(timer, period);
-   this.subscribe = Observable.timer(0,5000).subscribe( x => this.onLoad(this.nowPage), err => console.log(`err : ${{err}}`));
+    this.subscribe = Observable.timer(0, 5000).subscribe(x => this.onLoad(this.nowPage), err => console.log(`err : ${{err}}`));
   }
 
   ngOnDestroy(): void {
     this.subscribe.unsubscribe();
   }
-
-
 
 
   reLoad() {
@@ -57,41 +56,53 @@ export class BookListView3Component implements OnInit, OnDestroy {
     this.httpServiceService.gerRealDatasPaging(nowPage).subscribe(
       result => (
         this.bookModel = result['data'],
-          this.count = result['count'],
-          this.pagingMaker(this.count),
+          this.totalPage = result['totalPage'],
+          this.pagingMaker(this.totalPage),
           console.log('Data Succs')
       ),
       error => alert('음 서버 상태가 메롱하네요.. 다시 시도해보세요')
     )
-    ;
   };
 
   clearAll() {
     this.bookModel = null;
   };
 
+  alertEndPage() {
+    alert('페이지의 끝입니다');
+  }
 
   pageUp() {
+    if (this.nowPage + 1 >= this.totalPage) {
+      this.alertEndPage();
+      return;
+    }
     this.nowPage++;
     this.onLoad(this.nowPage);
   }
 
   pageDown() {
+    if (this.nowPage - 1 < 0) {
+      this.alertEndPage();
+      return;
+    }
     this.nowPage--;
     this.onLoad(this.nowPage);
   }
 
-  pagePush(numb: number) {
+  onClickPaging(numb: number) {
     this.nowPage = numb;
     this.onLoad(this.nowPage);
   }
 
-  private pagingMaker(count: number) {
+  private pagingMaker(total: number) {
 
     const range = Array();
-    for (let i = 0; i < count; i++) {
+
+    for (let i = 0; i < total; i++) {
       range.push(i);
     }
+
 
     this.pagingRange = range;
   }

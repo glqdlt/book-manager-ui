@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Book} from "../Model/BookModel";
-import {HttpService} from "../HttpService";
+import {HttpService} from "../Services/HttpService";
 
 @Component({
   selector: 'app-book-list-view2',

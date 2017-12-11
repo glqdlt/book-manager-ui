@@ -11,14 +11,15 @@ import {LoginComponent} from "./login-component/login-component";
 import {HttpClientModule} from "@angular/common/http";
 import {BookListViewComponent} from './book-list-view/book-list-view.component';
 import { WriteBookComponent } from './write-book/write-book.component';
-import {HttpService} from "./HttpService";
+import {HttpService} from "./Services/HttpService";
 import { BookListView2Component } from './book-list-view2/book-list-view2.component';
 import { BookListView3Component } from './book-list-view3/book-list-view3.component';
 import {FormsModule} from "@angular/forms";
 import { ModalLayerComponent } from './modal-layer/modal-layer.component';
 import { BookTypePipe } from './BookType';
-import {UrlListService} from "./UrlListService";
+import {UrlListService} from "./Services/UrlListService";
 import { ChartViewComponent } from './test-view/chart-view.component';
+import { ListDetailComponent } from './list-detail/list-detail.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'multi', pathMatch: 'full'},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'list', component: BookListViewComponent},
   {path: 'list2', component: BookListView2Component},
   {path: 'list3', component: BookListView3Component},
+  {path: 'detail/:id', component: ListDetailComponent},
   {path: 'charts', component: ChartViewComponent},
   {path: 'lock', component: LockPageCompComponent, canActivate: [AuthGuardService]},
   {path: "login", component: LoginComponent}];
@@ -50,7 +52,8 @@ const routes: Routes = [
     BookListView3Component,
     ModalLayerComponent,
     BookTypePipe,
-    ChartViewComponent
+    ChartViewComponent,
+    ListDetailComponent
   ],
   imports: [
     BrowserModule,

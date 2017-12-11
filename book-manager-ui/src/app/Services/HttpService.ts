@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {UrlListService} from "./UrlListService";
 import {NgForm} from "@angular/forms";
-import {Book} from "./Model/BookModel";
+import {Book} from "../Model/BookModel";
 
 @Injectable()
 export class HttpService {
@@ -55,6 +55,10 @@ export class HttpService {
 
   gerRealDatasPaging(page:number): any {
     return this.httpClient.get(this.URL+'/book/search/'+page);
+  }
+
+  getDetail(id:number): any{
+    return this.httpClient.get(this.URL+'/book/detail/'+id);
   }
 
   bookWrtie(book : Book) {
