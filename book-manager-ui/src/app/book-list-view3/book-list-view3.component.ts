@@ -1,22 +1,28 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Book} from "../Model/BookModel";
-import {HttpServiceService} from "../http-service.service";
+import {HttpService} from "../HttpService";
+import {Observable} from "rxjs/rx";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-book-list-view3',
   templateUrl: './book-list-view3.component.html',
   styleUrls: ['./book-list-view3.component.css']
 })
-export class BookListView3Component implements OnInit {
+export class BookListView3Component implements OnInit, OnDestroy {
   DATE_FORMAT = 'yyyy.MM.dd HH:mm:ss';
+
+
   title: string;
   bookModel: Book[];
   nowPage: number;
   count: number;
   pagingRange;
+  private subscribe: Subscription;
 
-  constructor(private httpServiceService: HttpServiceService) {
-    this.title = '도서 리스트 Paging';
+
+  constructor(private httpServiceService: HttpService) {
+    this.title = 'Book List Page';
     this.setFirstPageNumb();
     this.onLoad(this.nowPage);
   }
@@ -27,7 +33,15 @@ export class BookListView3Component implements OnInit {
 
 
   ngOnInit() {
+    // Observable.timer(timer, period);
+   this.subscribe = Observable.timer(0,5000).subscribe( x => this.onLoad(this.nowPage), err => console.log(`err : ${{err}}`));
   }
+
+  ngOnDestroy(): void {
+    this.subscribe.unsubscribe();
+  }
+
+
 
 
   reLoad() {
@@ -39,11 +53,13 @@ export class BookListView3Component implements OnInit {
   };
 
   onLoad(nowPage: number) {
+    console.log(nowPage);
     this.httpServiceService.gerRealDatasPaging(nowPage).subscribe(
       result => (
         this.bookModel = result['data'],
           this.count = result['count'],
-          this.pagingMaker(this.count)
+          this.pagingMaker(this.count),
+          console.log('Data Succs')
       ),
       error => alert('음 서버 상태가 메롱하네요.. 다시 시도해보세요')
     )
@@ -79,8 +95,5 @@ export class BookListView3Component implements OnInit {
 
     this.pagingRange = range;
   }
-
 }
-
-
 

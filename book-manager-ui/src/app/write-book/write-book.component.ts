@@ -3,8 +3,8 @@ import {NgForm} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Book} from "../Model/BookModel";
 import {Router} from "@angular/router";
-import {UrlListService} from "../url-list.service";
-import {HttpServiceService} from "../http-service.service";
+import {UrlListService} from "../UrlListService";
+import {HttpService} from "../HttpService";
 
 @Component({
   selector: 'app-write-book',
@@ -31,9 +31,9 @@ export class WriteBookComponent implements OnInit {
 
   private route: Router;
   private url: string;
-  private httpService: HttpServiceService;
+  private httpService: HttpService;
 
-  constructor(httpService: HttpServiceService, route: Router, urlList: UrlListService) {
+  constructor(httpService: HttpService, route: Router, urlList: UrlListService) {
 
     this.route = route;
     this.url = urlList.BOOK_SERVER_URL + '/book/wirte';

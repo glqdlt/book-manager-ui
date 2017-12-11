@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpServiceService} from "../http-service.service";
+import {HttpService} from "../HttpService";
 import {Book} from "../Model/BookModel";
 
 @Component({
@@ -16,11 +16,7 @@ export class BookListViewComponent implements OnInit {
 
   bookModel: Book;
 
-  constructor(private Httpservice: HttpServiceService) {
-
-    // 강제로 한번 객체 생성해서 set 해봄. ㅋㅋ
-    // this.bookModel = new Book();
-    // this.bookModel.subject = 'haha';
+  constructor(private Httpservice: HttpService) {
 
     this.dummyData = this.Httpservice.getDummyDatas();
     this.title = 'Book list!';

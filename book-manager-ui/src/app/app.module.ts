@@ -5,20 +5,20 @@ import {AppComponent} from './app.component';
 import {GlobalNavBarComponent} from './global-nav-bar/global-nav-bar.component';
 import {MultiTabsFormComponent} from './multi-tabs-form/multi-tabs-form.component';
 import {RouterModule, Routes} from "@angular/router";
-import {SubPageCompComponent} from './sub-page-comp/sub-page-comp.component';
-import {AuthGuardService} from "./authguard-service";
+import {LockPageCompComponent} from './sub-page-comp/sub-page-comp.component';
+import {AuthGuardService} from "./AuthGuardService";
 import {LoginComponent} from "./login-component/login-component";
 import {HttpClientModule} from "@angular/common/http";
 import {BookListViewComponent} from './book-list-view/book-list-view.component';
 import { WriteBookComponent } from './write-book/write-book.component';
-import {HttpServiceService} from "./http-service.service";
+import {HttpService} from "./HttpService";
 import { BookListView2Component } from './book-list-view2/book-list-view2.component';
 import { BookListView3Component } from './book-list-view3/book-list-view3.component';
 import {FormsModule} from "@angular/forms";
 import { ModalLayerComponent } from './modal-layer/modal-layer.component';
-import { BookTypePipe } from './book-type.pipe';
-import {UrlListService} from "./url-list.service";
-import { ChartViewComponent } from './chart-view/chart-view.component';
+import { BookTypePipe } from './BookType';
+import {UrlListService} from "./UrlListService";
+import { ChartViewComponent } from './test-view/chart-view.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'multi', pathMatch: 'full'},
@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'list2', component: BookListView2Component},
   {path: 'list3', component: BookListView3Component},
   {path: 'charts', component: ChartViewComponent},
-  {path: 'lock', component: SubPageCompComponent, canActivate: [AuthGuardService]},
+  {path: 'lock', component: LockPageCompComponent, canActivate: [AuthGuardService]},
   {path: "login", component: LoginComponent}];
 
 
@@ -42,7 +42,7 @@ const routes: Routes = [
     AppComponent,
     GlobalNavBarComponent,
     MultiTabsFormComponent,
-    SubPageCompComponent,
+    LockPageCompComponent,
     LoginComponent,
     BookListViewComponent,
     WriteBookComponent,
@@ -58,7 +58,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthGuardService, HttpServiceService, UrlListService],
+  providers: [AuthGuardService, HttpService, UrlListService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

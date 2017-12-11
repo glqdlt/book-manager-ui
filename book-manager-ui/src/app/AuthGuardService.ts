@@ -4,10 +4,10 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "
 @Injectable()
 export class AuthGuardService implements CanActivate{
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    console.log('please login');
-    this.router.navigate(["/login"]);
-
-    return true;
+    console.log('AuthGuard Work!');
+    // this.router.navigate(["/login"]);
+    console.log('route changing, this is RX');
+    return false;
   }
 
   constructor(private router : Router) { }

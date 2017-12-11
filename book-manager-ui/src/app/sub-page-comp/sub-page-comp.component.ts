@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-sub-page-comp',
-  templateUrl: './sub-page-comp.component.html',
-  styleUrls: ['./sub-page-comp.component.css']
+  selector: 'app-lock-page-comp',
+  templateUrl: './lock-page-comp.component.html',
+  styleUrls: ['./lock-page-comp.component.css']
 })
-export class SubPageCompComponent implements OnInit {
+export class LockPageCompComponent implements OnInit {
+  lockTitle: string;
 
   constructor() {
+    this.lockTitle = '나는 잠겼다!';
 
   }
 
   ngOnInit() {
-
+    console.log('sub-page-는 과연 렌더링 되었을까요?');
   }
 
 }

@@ -11,14 +11,14 @@ import * as d3Axis from 'd3-axis';
   template : `
     <h1>{{title}}</h1>
     <h2>{{subtitle}}</h2>
-    <svg width="900" height="500"></svg>
+    <svg width="900" height="500" style="width : 100%"></svg>
   `,
   styleUrls: ['./chart-view.component.css']
 })
 export class ChartViewComponent implements OnInit {
 
-  title: string = 'D3.js with Angular 2!';
-  subtitle: string = 'Line Chart';
+  title: string = 'D3 + 앵귤라';
+  subtitle: string = '라인 차트';
 
   private margin = {top: 20, right: 20, bottom: 30, left: 50};
   private width: number;

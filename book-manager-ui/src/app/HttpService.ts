@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {UrlListService} from "./url-list.service";
+import {UrlListService} from "./UrlListService";
 import {NgForm} from "@angular/forms";
 import {Book} from "./Model/BookModel";
 
 @Injectable()
-export class HttpServiceService {
+export class HttpService {
 
   private URL: string;
 

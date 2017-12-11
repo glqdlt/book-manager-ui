@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Book} from "../Model/BookModel";
-import {HttpServiceService} from "../http-service.service";
+import {HttpService} from "../HttpService";
 
 @Component({
   selector: 'app-book-list-view2',
@@ -12,8 +12,8 @@ export class BookListView2Component implements OnInit {
   bookModel: Book[];
   DATE_FORMAT = 'yyyy.MM.dd HH:mm:ss';
 
-  constructor(private httpClientService: HttpServiceService) {
-    this.title = '도서 리스트 All';
+  constructor(private httpClientService: HttpService) {
+    this.title = 'Book List All';
     this.onLoad();
   }
 

@@ -6,12 +6,15 @@ import {Component, OnInit} from '@angular/core';
   templateUrl : './login-component.html'
 })
 export class LoginComponent implements OnInit {
+  loginTitle: string;
 
   constructor() {
+    console.log('login Component Construct..')
+    this.loginTitle = 'Plz, Login,.,,../.......';
   }
 
   ngOnInit() {
-    console.log('hello');
+    console.log('login Created');
   }
 
 }
