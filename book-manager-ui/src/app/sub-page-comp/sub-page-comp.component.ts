@@ -9,12 +9,12 @@ export class LockPageCompComponent implements OnInit {
   lockTitle: string;
 
   constructor() {
-    this.lockTitle = '나는 잠겼다!';
+    this.lockTitle = 'i am lock!';
 
   }
 
   ngOnInit() {
-    console.log('sub-page-는 과연 렌더링 되었을까요?');
+    console.log('this page render?');
   }
 
 }

@@ -24,7 +24,7 @@ export class BookListView3Component implements OnInit, OnDestroy {
   constructor(private httpServiceService: HttpService) {
     this.title = 'Book List Page';
     this.setFirstPageNumb();
-    this.onLoad(this.nowPage);
+    // this.onLoad(this.nowPage);
   }
 
   setFirstPageNumb(numb: number = 0) {
