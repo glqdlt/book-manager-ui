@@ -3,11 +3,18 @@
     New Book
   </h3>
 </div>
-
 <form class="w3-container">
+  <!--loading spinner-->
+  <!--http://codetunnel.io/how-to-do-loading-spinners-the-angular-2/-->
   <label>No:</label>
-  <input readonly="readonly" type="text" class="w3-input w3-border" [value]="bookModel.no"/>
+  <input readonly="readonly" type="text" class="w3-input w3-border w3-light-gray" [value]="bookModel.no"/>
   <br/>
+
+  <div id="thumbnail_area">
+    <img src="http://via.placeholder.com/200x400"/>
+    <button class="w3-button w3-green">Upload</button>
+  </div>
+
   <label>subject:</label>
   <input class="w3-input w3-border" type="text" [value]="bookModel.subject">
   <br/>
@@ -15,22 +22,22 @@
   <input class="w3-input w3-border" type="text" [value]="bookModel.author">
   <br/>
   <label>reg_date:</label>
-  <input readonly="readonly" class="w3-input w3-border" type="text" [value]="bookModel.reg_date | date : 'yyyy.MM.dd HH:mm:ss'">
+  <input readonly="readonly" class="w3-input w3-border w3-light-gray" type="text" [value]="bookModel.reg_date | date : 'yyyy.MM.dd HH:mm:ss'">
   <br/>
   <label>reg_id:</label>
-  <input readonly="readonly" class="w3-input w3-border" type="text" [value]="bookModel.reg_id">
+  <input readonly="readonly" class="w3-input w3-border w3-light-gray" type="text" [value]="bookModel.reg_id">
   <br/>
   <label>read_status:</label>
   <input class="w3-input w3-border" type="text" [value]="bookModel.read_status ? '읽음': '아직'">
   <br/>
   <label>update_date:</label>
-  <input readonly="readonly" class="w3-input w3-border" type="text" [value]="bookModel.update_date | date : 'yyyy.MM.dd HH:mm:ss'">
+  <input readonly="readonly" class="w3-input w3-border w3-light-gray" type="text" [value]="bookModel.update_date | date : 'yyyy.MM.dd HH:mm:ss'">
   <br/>
   <label>server_name:</label>
   <input class="w3-input w3-border" type="text" [value]="bookModel.server_name">
   <br/>
   <label>future_date:</label>
-  <input readonly="readonly" class="w3-input w3-border" type="text" [value]="bookModel.future_date | date : 'yyyy.MM.dd HH:mm:ss'">
+  <input class="w3-input w3-border" type="text" [value]="bookModel.future_date | date : 'yyyy.MM.dd HH:mm:ss'">
   <button class="w3-button w3-green" (click)="onClickModal()">Calendar</button>
   <br/>
   <label>review_url:</label>
