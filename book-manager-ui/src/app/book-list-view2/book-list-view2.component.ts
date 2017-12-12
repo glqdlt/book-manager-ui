@@ -34,7 +34,7 @@ export class BookListView2Component implements OnInit {
   onLoad(){
     this.httpClientService.getRealDatas().subscribe(
       result => this.bookModel = result.reverse(),
-      error => alert('음 서버 상태가 메롱하네요.. 다시 시도해보세요')
+      error => alert('Server Is Die')
     );
   }
 

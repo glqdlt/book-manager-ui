@@ -18,7 +18,6 @@ export class BookListViewComponent implements OnInit {
 
   constructor(private Httpservice: HttpService) {
 
-    this.dummyData = this.Httpservice.getDummyDatas();
     this.title = 'Book list!';
   }
 

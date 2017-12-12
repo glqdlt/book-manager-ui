@@ -12,7 +12,6 @@ import {Subscription} from "rxjs/Subscription";
 export class BookListView3Component implements OnInit, OnDestroy {
   DATE_FORMAT = 'yyyy.MM.dd HH:mm:ss';
 
-
   title: string;
   bookModel: Book[];
 
@@ -43,24 +42,22 @@ export class BookListView3Component implements OnInit, OnDestroy {
   }
 
 
-  reLoad() {
-    if (this.bookModel !== null) {
-      alert('이미 데이터가 있는데요');
-      return;
-    }
-    this.onLoad(this.nowPage);
-  };
+  // reLoad() {
+  //   if (this.bookModel !== null) {
+  //     alert('이미 데이터가 있는데요');
+  //     return;
+  //   }
+  //   this.onLoad(this.nowPage);
+  // };
 
   onLoad(nowPage: number) {
-    console.log(nowPage);
     this.httpServiceService.gerRealDatasPaging(nowPage).subscribe(
       result => (
         this.bookModel = result['data'],
           this.totalPage = result['totalPage'],
-          this.pagingMaker(this.totalPage),
-          console.log('Data Succs')
+          this.pagingMaker(this.totalPage)
       ),
-      error => alert('음 서버 상태가 메롱하네요.. 다시 시도해보세요')
+      error => console.log(`May be Server is Die.. Error Code: ${{error}}`)
     )
   };
 
@@ -69,7 +66,7 @@ export class BookListView3Component implements OnInit, OnDestroy {
   };
 
   alertEndPage() {
-    alert('페이지의 끝입니다');
+    alert('Page End');
   }
 
   pageUp() {
@@ -102,8 +99,6 @@ export class BookListView3Component implements OnInit, OnDestroy {
     for (let i = 0; i < total; i++) {
       range.push(i);
     }
-
-
     this.pagingRange = range;
   }
 }

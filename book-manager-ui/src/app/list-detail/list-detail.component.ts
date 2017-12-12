@@ -14,10 +14,21 @@ export class ListDetailComponent implements OnInit {
   bookID : number;
   private bookModel: Book;
 
+  modalBoolean : boolean;
+
   constructor(route : ActivatedRoute, httpService : HttpService) {
     this.httpService = httpService;
     this.bookID = route.snapshot.params['id'];
     this.bookModel = new Book;
+    this.modalBoolean = false;
+  }
+
+  onClickModal(){
+    if(this.modalBoolean === false){
+      this.modalBoolean = true;
+      return;
+    }
+    this.modalBoolean = false;
   }
 
   ngOnInit() {
