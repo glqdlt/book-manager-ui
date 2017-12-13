@@ -682,6 +682,5 @@ export class ChartViewComponent implements OnInit {
       .attr("class", "line")
       .attr("d", this.line);
   }
-
-
 }
+
